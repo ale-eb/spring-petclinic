@@ -60,3 +60,10 @@ publishing {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+test{
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+    // enable JUnit Platform (a.k.a. JUnit 5) support
+    useJUnitPlatform()
+}
