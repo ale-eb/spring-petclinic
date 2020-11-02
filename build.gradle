@@ -7,6 +7,7 @@ plugins {
     id 'maven-publish'
     id 'org.springframework.boot' version '2.1.9.RELEASE'
     id "org.sonarqube" version "3.0"
+    id 'jacoco'
 }
 
 repositories {
@@ -67,4 +68,13 @@ test{
     useTestNG()
     // enable JUnit Platform (a.k.a. JUnit 5) support
     useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination file("${buildDir}/jacocoHtml")
+    }
 }
